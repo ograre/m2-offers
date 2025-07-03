@@ -1,0 +1,42 @@
+<?php /** @var Ograre\Offers\Block\Offers $block */ ?>
+
+<?php if ($block->hasOffers()): ?>
+    <div class="offers-container" data-role="offers-rotator">
+        <div class="control previous" data-role="control-previous">
+            <p> < </p>
+        </div>
+        <div class="offers-list">
+            <?php
+                $offers = $block->getOffers();
+                $i = 0;
+                foreach ($offers as $offer):
+            ?>
+                <div class="offer <?= $i++ > 0 ? '' : 'active' ?>" data-role="offer-item">
+                    <div class="offer__img">
+                        <img src="<?= $offer->getImageUrl() ?>" alt="<?= $offer->getTitle() ?>" />
+                    </div>
+                    <div class="offer__title">
+                        <p><?= $offer->getTitle() ?></p>
+                    </div>
+                    <div class="offer__action">
+                        <a class="action primary" href="<?= $offer->getLinkUrl() ?>">
+                            <?= __('En savoir plus') ?>
+                        </a>
+                    </div>
+                </div>
+            <?php endforeach; ?>
+        </div>
+        <div class="control next" data-role="control-next">
+            <p> > </p>
+        </div>
+    </div>
+    <script type="text/x-magento-init">
+        {
+            "[data-role=offers-rotator]": {
+                "offerRotator": {
+                    "offerSelector": "[data-role=offer-item]"
+                }
+            }
+        }
+    </script>
+<?php endif; ?>

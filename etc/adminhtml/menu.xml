@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Backend:etc/menu.xsd">
+    <menu>
+        <add id="Ograre_Offers::offers" title="Offers" translate="title" module="Ograre_Offers" sortOrder="70" resource="Ograre_Offers::view" />
+        <add id="Ograre_Offers::category_offers" title="Category Offers" translate="title" module="Ograre_Offers" sortOrder="10" parent="Ograre_Offers::offers" resource="Ograre_Offers::view" />
+        <add id="Ograre_Offers::view_offers" title="Manage Offers" translate="title" module="Ograre_Offers" sortOrder="10" parent="Ograre_Offers::category_offers" action="ograre/offers" resource="Ograre_Offers::view" />
+        <add id="Ograre_Offers::new_offer" title="New Offer" translate="title" module="Ograre_Offers" sortOrder="20" parent="Ograre_Offers::category_offers" action="ograre/offers/edit" resource="Ograre_Offers::manage" />
+    </menu>
+</config>

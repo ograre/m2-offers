@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:ObjectManager/etc/config.xsd">
+    <!-- ARGUMENTS -->
+    <type name="Ograre\Offers\Model\ResourceModel\Offer\Grid\Collection">
+        <arguments>
+            <argument name="mainTable" xsi:type="string">offer_entity</argument>
+            <argument name="eventPrefix" xsi:type="string">offer_grid_collection</argument>
+            <argument name="eventObject" xsi:type="string">offer_grid_collection</argument>
+            <argument name="resourceModel" xsi:type="string">Ograre\Offers\Model\ResourceModel\Offer</argument>
+        </arguments>
+    </type>
+    <type name="Ograre\Offers\Model\Offer\DataProvider">
+        <arguments>
+            <argument name="pool" xsi:type="object">Ograre\Offers\Ui\DataProvider\Modifier\Pool</argument>
+        </arguments>
+    </type>
+
+    <!-- VIRTUAL TYPE -->
+    <virtualType name="Ograre\Offers\Ui\DataProvider\Modifier\Pool" type="Magento\Ui\DataProvider\Modifier\Pool" >
+        <arguments>
+            <argument name="modifiers" xsi:type="array">
+                <item name="imageModifier" xsi:type="array">
+                    <item name="class" xsi:type="string">Ograre\Offers\Ui\Component\DataProvider\ImageModifier</item>
+                    <item name="sortOrder" xsi:type="number">10</item>
+                </item>
+            </argument>
+        </arguments>
+    </virtualType>
+</config>

@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:ObjectManager/etc/config.xsd">
+    <!-- PREFERENCE -->
+    <preference for="Ograre\Offers\Api\Data\OfferInterface" type="Ograre\Offers\Model\Offer" />
+    <preference for="Ograre\Offers\Api\Data\OfferSearchResultsInterface" type="Ograre\Offers\Model\OfferSearchResults" />
+    <preference for="Ograre\Offers\Api\OfferRepositoryInterface" type="Ograre\Offers\Model\ResourceModel\OfferRepository" />
+    <preference for="Ograre\Offers\Api\Data\OfferFileProcessorInterface" type="Ograre\Offers\Model\Offer\FileProcessor" />
+
+    <!-- ARGUMENTS -->
+    <type name="Ograre\Offers\Helper\OfferLink">
+        <arguments>
+            <argument xsi:type="array" name="processors">
+                <item xsi:type="object" name="product">Ograre\Offers\Model\OfferLink\Processor\Product\Proxy</item>
+                <item xsi:type="object" name="category">Ograre\Offers\Model\OfferLink\Processor\Category\Proxy</item>
+                <item xsi:type="object" name="url">Ograre\Offers\Model\OfferLink\Processor\Url\Proxy</item>
+            </argument>
+        </arguments>
+    </type>
+    <type name="Ograre\Offers\Model\OfferLink\Processor\Product">
+        <arguments>
+            <argument xsi:type="object" name="productRepository">Magento\Catalog\Api\ProductRepositoryInterface\Proxy</argument>
+        </arguments>
+    </type>
+    <type name="Ograre\Offers\Model\OfferLink\Processor\Category">
+        <arguments>
+            <argument xsi:type="object" name="categoryRepository">Magento\Catalog\Api\CategoryRepositoryInterface\Proxy</argument>
+        </arguments>
+    </type>
+    <type name="Magento\Framework\EntityManager\MetadataPool">
+        <arguments>
+            <argument name="metadata" xsi:type="array">
+                <item name="Ograre\Offers\Api\Data\OfferInterface" xsi:type="array">
+                    <item name="entityTableName" xsi:type="string">offer_entity</item>
+                    <item name="identifierField" xsi:type="string">entity_id</item>
+                </item>
+            </argument>
+        </arguments>
+    </type>
+    <type name="Magento\Framework\View\Element\UiComponent\DataProvider\CollectionFactory">
+        <arguments>
+            <argument name="collections" xsi:type="array">
+                <item name="offer_listing_data_source" xsi:type="string">Ograre\Offers\Model\ResourceModel\Offer\Grid\Collection</item>
+            </argument>
+        </arguments>
+    </type>
+</config>

@@ -1,0 +1,33 @@
+{
+    "offer_entity": {
+        "column": {
+            "entity_id": true,
+            "title": true,
+            "image": true,
+            "link": true,
+            "category_ids": true,
+            "start_date": true,
+            "end_date": true,
+            "created_at": true,
+            "updated_at": true
+        },
+        "constraint": {
+            "PRIMARY": true
+        }
+    },
+    "offer_category": {
+        "column": {
+            "offer_id": true,
+            "category_id": true
+        },
+        "index": {
+            "OFFER_CATEGORY_OFFER_ID": true,
+            "OFFER_CATEGORY_CATEGORY_ID": true
+        },
+        "constraint": {
+            "PRIMARY": true,
+            "OFFER_CATEGORY_OFFER_ID_OFFER_ENTITY_ENTITY_ID": true,
+            "OFFER_CATEGORY_CATEGORY_ID_CATALOG_CATEGORY_ENTITY_ENTITY_ID": true
+        }
+    }
+}

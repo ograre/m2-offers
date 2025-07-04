@@ -1,0 +1,19 @@
+{
+    "name": "ograre/test-dnd",
+    "description": "Test module for DND appliance",
+    "type": "magento2-module",
+    "license": "OSL-3.0",
+    "require": {
+        "php": "~8.2.0||~8.3.0||~8.4.0",
+        "magento/framework": "103.0.*",
+        "magento/module-backend": "102.0.*"
+    },
+    "autoload": {
+        "files": [
+            "registration.php"
+        ],
+        "psr-4": {
+            "Ograre\\Offers\\": ""
+        }
+    }
+}

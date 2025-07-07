@@ -11,7 +11,7 @@ This module is compatible with the latest Magento version (2.4.8).
 ### Installation
 
 ```bash
-composer require ograre/test-dnd
+composer require ograre/m2-offers
 ```
 
 Then
